@@ -1,38 +1,3 @@
-#Разрабатываем программу с учётом всего того, что мы изучили.
-#Мы будем парсить данные с сайта https://tomsk.hh.ru/vacancies/programmist и сохранять их в csv-файл.
-
-# Импортируем модуль со временем
-import time
-# Импортируем модуль csv
-import csv
-# Импортируем Selenium
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-# Инициализируем браузер
-#driver = webdriver.Firefox()
-# Если мы используем Chrome, пишем
-driver = webdriver.Chrome()
-
-# В отдельной переменной указываем сайт, который будем просматривать
-url = "https://tomsk.hh.ru/vacancies/programmist"
-
-
-# Открываем веб-страницу
-driver.get(url)
-
-# Задаём 3 секунды ожидания, чтобы веб-страница успела прогрузиться
-time.sleep(3)
-
-
-# Находим все карточки с вакансиями с помощью названия класса
-# Названия классов берём с кода сайта
-vacancies = driver.find_elements(By.CLASS_NAME, 'vacancy-card--z_UXteNo7bRGzxWVcL7y')
-#vacancies = driver.find_elements(By.CLASS_NAME,'vacancy-card-container--OwxCdOj5QlSlCBZvSggS')
-
-# Выводим вакансии на экран
-#print(vacancies)
-print(f"Найдено {len(vacancies)} вакансий")
 
 # Создаём список, в который потом всё будет сохраняться
 parsed_data = []
